@@ -1,0 +1,174 @@
+@keyframes grow-pic {
+    0% {
+        width: 25px;
+        opacity: 0;
+    }
+    100% {
+        width: 475px;
+        opacity: 1;
+    }
+/*animation of the logo that has a starting opacity of 0 to 1. The size of the logo starts from 25px to 475px*/
+}
+
+#logo{
+    animation-name: grow-pic;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+/* Logo animation duration is 5seconds */
+}
+
+body{
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+/* Primary font is Poppins and backup is serif and from the images folder, the concrete_seamless.png was selected as background */
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Header is in flex display and align-items is selected to align the header from top to bottom in center direction */
+
+.nav_links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* navigation links are in display:flex and flex-direction: column so that the links are arranged vertically and align-items:center lets the elements align top and bottom in center direction */
+
+
+.nav_item a:link, .nav_item a:visited{
+    color: #0000ee;
+}
+/* used inspect element to determine the color of navigation links and put that color for the selector when the link is clicked or not */
+
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0px;
+    border-radius: 50px 50px 0px 0px;
+}
+/* used parent-child selector for header because the number-labeled sections are childs of the card parent class*/
+.card{
+    flex-basis: 450px;
+    border-radius: 50px 50px 0px 0px;
+}
+/* used flex-basis to set the initial main size of the elements in the card class*/
+
+
+.pricing{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* flex wrap allowed the flex items in the pricing class to be wrapped onto mulitple lines. justify-content and allign-items, both in center, ensure the elements are at the center of the page */
+
+
+.gallery > img{
+    border: solid 10px #50C7C7;
+    margin: 10px 10px 10px 10px;
+    width: 300px;
+}
+/* used child-parent selector because img are the only children of the gallery class */
+
+.gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/* flex wrap allowed the images in the gallery class to be wrapped onto mulitple lines */
+
+@media screen and (min-width: 900px){
+    header{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    /* justify-content: space-between was utilized because logo id and nav_links class needed to be on opposite ends of the page so the space-between takes the available space between items, pushing them to opposite edges */
+    .nav_links{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    #logo{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    /* flex-start pushes the logo id to the start of the container or left edge */
+    .card{
+        flex-basis: 275px;
+    }
+    /* used flex-basis to set the initial  size of the elements in the card class*/
+
+    .pricing{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    header:not(main header) {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }
+    /* the selector was chosen in order to select for the header that is outside of the main class  */
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #logo{
+        animation: none;
+    }
+    /* to get a more accessible website experience, none declares there to be no animation for the logo when selecting prefers-reduced-motion */
+
+}
+
+/* did not include the 'and (orientation: portrait)' because the layout became different when using chrome and firefox browsers*/
+@media print {
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    nav{
+        width:100%;
+    }
+    /* used width:100% in order to set the nav parent width as 100% in relation to the parent, which is the header  */
+
+    .nav_links{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row; 
+    /* by using justify-content:space-around, the nav links are evenly spaced around the navigation */
+
+
+    }
+    .pricing{
+        display: flex; 
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+    /* using flex-wrap: nowrap puts the elements in the pricing class in one line */
+
+
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    /* used flex-basis to set the initial main size of the elements in the card class for print preview page*/
+
+    .gallery, #gallery{
+        display: none;
+    }
+    /* selected gallery class and gallery id to not be shown in the print preview page using display: none*/
+
+
+    .card ul li:nth-child(2)::after {
+        content: '\1F44D';
+    }
+    /* .card ul li:nth-child(2) calls the second child in the ul tag that is in the card class ::after makes sure that the emoji is placed after the selector one the web page. '\1F44D' is the universal code for thumbs up */
+
+
+}
